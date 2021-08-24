@@ -43,24 +43,21 @@ class CaoshisStore {
 
   prefetchData = () => {
     axios
-      .get(
-        "https://raw.githubusercontent.com/chinese-poetry/chinese-poetry/master/caocaoshiji/caocao.json"
-      )
-      .then((res) => {
-        console.log(res.data);
-        res.data.forEach(
-          (
-            item: { title: string; paragraphs: Array<string> },
-            index: number
-          ) => {
-            this.createCaoshi({
-              id: index,
-              title: item.title,
-              paragraphs: item.paragraphs,
-            });
-          }
-        );
-      });
+			.get(
+				'https://raw.githubusercontent.com/chinese-poetry/chinese-poetry/master/caocaoshiji/caocao.json'
+			)
+			.then(res => {
+				console.log(res.data);
+				res.data.forEach(
+					(item: {title: string; paragraphs: Array<string>}, index: number) => {
+						this.createCaoshi({
+							id: index,
+							title: item.title,
+							paragraphs: item.paragraphs,
+						});
+					}
+				);
+			});
   };
 }
 
